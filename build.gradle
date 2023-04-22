@@ -17,17 +17,25 @@ repositories {
 }
 
 dependencies {
-    providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
-    
-    // Jakarta MVC 
-	compileOnly 'jakarta.mvc:jakarta.mvc-api:2.1.0'
-	implementation 'org.eclipse.krazo:krazo-core:3.0.1'
-	// Open Liberty の Jakarta REST エンジンは RESTEasy なので、こちらが必要
-	implementation 'org.eclipse.krazo:krazo-resteasy:3.0.1'
+    compileOnly 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
 
 	// Lombok	
 	compileOnly 'org.projectlombok:lombok:1.18.26'
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    
+    /*
+     * Jakarta MVC
+     * 全て implementation
+     */ 
+	implementation 'jakarta.mvc:jakarta.mvc-api:2.1.0'
+	implementation 'org.eclipse.krazo:krazo-core:3.0.1'
+	// Open Liberty の Jakarta REST エンジンは RESTEasy なので、こちらが必要
+	implementation 'org.eclipse.krazo:krazo-resteasy:3.0.1'
+	
+	// なぜかOpen Liberty側のresteasyの参照が足りてないので、ここで追加する必要がある。
+	implementation 'org.jboss.resteasy:resteasy-core-spi:6.2.3.Final'
+	
+	
 }
 
 clean.dependsOn 'libertyStop'
