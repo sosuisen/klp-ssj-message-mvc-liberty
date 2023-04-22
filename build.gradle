@@ -1,0 +1,33 @@
+plugins {
+    id 'war'
+    id 'io.openliberty.tools.gradle.Liberty' version '3.5.2'
+}
+
+version '1.0-SNAPSHOT'
+group 'com.example'
+
+sourceCompatibility = 17
+targetCompatibility = 17
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
+    
+    // Jakarta MVC 
+	compileOnly 'jakarta.mvc:jakarta.mvc-api:2.1.0'
+	implementation 'org.eclipse.krazo:krazo-core:3.0.1'
+	// Open Liberty の Jakarta REST エンジンは RESTEasy なので、こちらが必要
+	implementation 'org.eclipse.krazo:krazo-resteasy:3.0.1'
+
+	// Lombok	
+	compileOnly 'org.projectlombok:lombok:1.18.26'
+	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+}
+
+clean.dependsOn 'libertyStop'
