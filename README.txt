@@ -1,3 +1,5 @@
+Open Liberty starter の Jakarta MVC 実装例。Krazo 3.0.1 と相性が悪いので、まだ Jakarta MVC が動かない。
+
 After you generate a starter project, these instructions will help you with what to do next.
 
 The Open Liberty starter gives you a simple, quick way to get the necessary files to start building
